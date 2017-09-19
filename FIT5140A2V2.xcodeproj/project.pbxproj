@@ -12,7 +12,35 @@
 		240200661F67999F00F38ED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 240200641F67999F00F38ED1 /* Main.storyboard */; };
 		240200681F67999F00F38ED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 240200671F67999F00F38ED1 /* Assets.xcassets */; };
 		2402006B1F67999F00F38ED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 240200691F67999F00F38ED1 /* LaunchScreen.storyboard */; };
+		240200731F6799C600F38ED1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240200721F6799C600F38ED1 /* SwiftyJSON.swift */; };
+		240200751F679A2B00F38ED1 /* CurrentWeatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240200741F679A2B00F38ED1 /* CurrentWeatherController.swift */; };
+		2402007B1F679C5B00F38ED1 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240200781F679C5B00F38ED1 /* Chart.swift */; };
+		2402007C1F679C5B00F38ED1 /* ChartColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240200791F679C5B00F38ED1 /* ChartColors.swift */; };
+		2402007D1F679C5B00F38ED1 /* ChartSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402007A1F679C5B00F38ED1 /* ChartSeries.swift */; };
+		2402007F1F67A89300F38ED1 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402007E1F67A89300F38ED1 /* Queue.swift */; };
+		24BD28191F700127003E83DE /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BD28181F700127003E83DE /* HistoryCell.swift */; };
+		24BD281B1F700195003E83DE /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BD281A1F700195003E83DE /* HistoryController.swift */; };
+		24BD281F1F70A2FA003E83DE /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 24BD281E1F70A2FA003E83DE /* DLRadioButton.m */; };
+		24BD28211F70AA5C003E83DE /* DLRadioButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BD28201F70AA5C003E83DE /* DLRadioButton.framework */; };
+		24BD28221F70AA5C003E83DE /* DLRadioButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24BD28201F70AA5C003E83DE /* DLRadioButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		24FC39B11F6A2FC800584AF0 /* SensorOneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FC39B01F6A2FC800584AF0 /* SensorOneController.swift */; };
+		24FC39B31F6A35A100584AF0 /* PressureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FC39B21F6A35A100584AF0 /* PressureController.swift */; };
+		24FC39B51F6A35F600584AF0 /* AltitudeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FC39B41F6A35F600584AF0 /* AltitudeController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		24BD28231F70AA5C003E83DE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				24BD28221F70AA5C003E83DE /* DLRadioButton.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2402005D1F67999F00F38ED1 /* FIT5140A2V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FIT5140A2V2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +50,21 @@
 		240200671F67999F00F38ED1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2402006A1F67999F00F38ED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2402006C1F67999F00F38ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		240200721F6799C600F38ED1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		240200741F679A2B00F38ED1 /* CurrentWeatherController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherController.swift; sourceTree = "<group>"; };
+		240200781F679C5B00F38ED1 /* Chart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Chart.swift; path = "SwiftChart-master/Source/Chart.swift"; sourceTree = SOURCE_ROOT; };
+		240200791F679C5B00F38ED1 /* ChartColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartColors.swift; path = "SwiftChart-master/Source/ChartColors.swift"; sourceTree = SOURCE_ROOT; };
+		2402007A1F679C5B00F38ED1 /* ChartSeries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartSeries.swift; path = "SwiftChart-master/Source/ChartSeries.swift"; sourceTree = SOURCE_ROOT; };
+		2402007E1F67A89300F38ED1 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		24BD28181F700127003E83DE /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		24BD281A1F700195003E83DE /* HistoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
+		24BD281C1F70A2FA003E83DE /* FIT5140A2V2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FIT5140A2V2-Bridging-Header.h"; sourceTree = "<group>"; };
+		24BD281D1F70A2FA003E83DE /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
+		24BD281E1F70A2FA003E83DE /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
+		24BD28201F70AA5C003E83DE /* DLRadioButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DLRadioButton.framework; sourceTree = "<group>"; };
+		24FC39B01F6A2FC800584AF0 /* SensorOneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorOneController.swift; sourceTree = "<group>"; };
+		24FC39B21F6A35A100584AF0 /* PressureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureController.swift; sourceTree = "<group>"; };
+		24FC39B41F6A35F600584AF0 /* AltitudeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltitudeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24BD28211F70AA5C003E83DE /* DLRadioButton.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +82,7 @@
 		240200541F67999F00F38ED1 = {
 			isa = PBXGroup;
 			children = (
+				24BD28201F70AA5C003E83DE /* DLRadioButton.framework */,
 				2402005F1F67999F00F38ED1 /* FIT5140A2V2 */,
 				2402005E1F67999F00F38ED1 /* Products */,
 			);
@@ -54,12 +99,26 @@
 		2402005F1F67999F00F38ED1 /* FIT5140A2V2 */ = {
 			isa = PBXGroup;
 			children = (
-				240200601F67999F00F38ED1 /* AppDelegate.swift */,
-				240200621F67999F00F38ED1 /* ViewController.swift */,
-				240200641F67999F00F38ED1 /* Main.storyboard */,
-				240200671F67999F00F38ED1 /* Assets.xcassets */,
+				24BD281D1F70A2FA003E83DE /* DLRadioButton.h */,
+				24BD281E1F70A2FA003E83DE /* DLRadioButton.m */,
 				240200691F67999F00F38ED1 /* LaunchScreen.storyboard */,
+				240200781F679C5B00F38ED1 /* Chart.swift */,
+				240200791F679C5B00F38ED1 /* ChartColors.swift */,
+				2402007A1F679C5B00F38ED1 /* ChartSeries.swift */,
+				240200721F6799C600F38ED1 /* SwiftyJSON.swift */,
+				2402007E1F67A89300F38ED1 /* Queue.swift */,
+				240200601F67999F00F38ED1 /* AppDelegate.swift */,
+				240200641F67999F00F38ED1 /* Main.storyboard */,
+				24BD28181F700127003E83DE /* HistoryCell.swift */,
+				24BD281A1F700195003E83DE /* HistoryController.swift */,
+				240200621F67999F00F38ED1 /* ViewController.swift */,
+				24FC39B41F6A35F600584AF0 /* AltitudeController.swift */,
+				24FC39B21F6A35A100584AF0 /* PressureController.swift */,
+				240200741F679A2B00F38ED1 /* CurrentWeatherController.swift */,
+				24FC39B01F6A2FC800584AF0 /* SensorOneController.swift */,
+				240200671F67999F00F38ED1 /* Assets.xcassets */,
 				2402006C1F67999F00F38ED1 /* Info.plist */,
+				24BD281C1F70A2FA003E83DE /* FIT5140A2V2-Bridging-Header.h */,
 			);
 			path = FIT5140A2V2;
 			sourceTree = "<group>";
@@ -74,6 +133,7 @@
 				240200591F67999F00F38ED1 /* Sources */,
 				2402005A1F67999F00F38ED1 /* Frameworks */,
 				2402005B1F67999F00F38ED1 /* Resources */,
+				24BD28231F70AA5C003E83DE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -97,6 +157,7 @@
 					2402005C1F67999F00F38ED1 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 4KR69MB8K9;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -137,8 +198,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24FC39B11F6A2FC800584AF0 /* SensorOneController.swift in Sources */,
+				2402007D1F679C5B00F38ED1 /* ChartSeries.swift in Sources */,
+				2402007B1F679C5B00F38ED1 /* Chart.swift in Sources */,
+				240200751F679A2B00F38ED1 /* CurrentWeatherController.swift in Sources */,
+				2402007F1F67A89300F38ED1 /* Queue.swift in Sources */,
+				24BD281B1F700195003E83DE /* HistoryController.swift in Sources */,
+				2402007C1F679C5B00F38ED1 /* ChartColors.swift in Sources */,
+				24BD28191F700127003E83DE /* HistoryCell.swift in Sources */,
+				240200731F6799C600F38ED1 /* SwiftyJSON.swift in Sources */,
+				24BD281F1F70A2FA003E83DE /* DLRadioButton.m in Sources */,
 				240200631F67999F00F38ED1 /* ViewController.swift in Sources */,
+				24FC39B31F6A35A100584AF0 /* PressureController.swift in Sources */,
 				240200611F67999F00F38ED1 /* AppDelegate.swift in Sources */,
+				24FC39B51F6A35F600584AF0 /* AltitudeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,11 +334,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 4KR69MB8K9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FIT5140A2V2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Monash.FIT5140A2V2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FIT5140A2V2/FIT5140A2V2-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -274,11 +354,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 4KR69MB8K9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FIT5140A2V2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Monash.FIT5140A2V2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FIT5140A2V2/FIT5140A2V2-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -302,6 +388,7 @@
 				240200711F67999F00F38ED1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

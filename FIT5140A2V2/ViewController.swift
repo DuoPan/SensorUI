@@ -9,10 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet var button1: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        button1.setImage(#imageLiteral(resourceName: "sensor1"), for: .normal)
+        button1.contentMode = .scaleAspectFit
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +23,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+    }
 
 }
 
