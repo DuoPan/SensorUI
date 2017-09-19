@@ -311,10 +311,10 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
                 labelStatis.text = NSString(format: "Celsius: Avg %.2f, Max %.2f, Min %.2f",avg1, max1, min1) as String
             }
             else if btnA2.isSelected == true{
-                labelStatis.text = NSString(format: "Pressure: Avg %.2f, Max %.2f, Min %.2f",avg1, max1, min1) as String
+                labelStatis.text = NSString(format: "Pressure: Avg %.2f, Max %.2f, Min %.2f",avg2, max2, min2) as String
             }
             else{
-                labelStatis.text = NSString(format: "Altitude: Avg %.2f, Max %.2f, Min %.2f",avg1, max1, min1) as String
+                labelStatis.text = NSString(format: "Altitude: Avg %.2f, Max %.2f, Min %.2f",avg3, max3, min3) as String
             }
         }
         else if flag == 0{
