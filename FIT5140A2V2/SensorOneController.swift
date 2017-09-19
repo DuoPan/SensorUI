@@ -22,7 +22,7 @@ class SensorOneController: UIViewController,UIPageViewControllerDataSource {
     var controllers = [UIViewController]()
     
     @IBOutlet var indicateView: UIView!
-    var indicateImageView: UIImageView!
+    var indicateImageView: UIImageView! // red line
     
     var lastPage = 0
     var currentPage: Int = 0 {
@@ -109,15 +109,18 @@ class SensorOneController: UIViewController,UIPageViewControllerDataSource {
         currentPage = notification.object as! Int
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "showAlarm") {
+            let controller = segue.destination as! AlarmController
+            controller.mydelegate = temperatureController
+        }
     }
-    */
+    
+
 
 }
 

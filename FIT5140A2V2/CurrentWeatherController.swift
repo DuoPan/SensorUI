@@ -17,7 +17,7 @@
 
 import UIKit
 
-class CurrentWeatherController: UIViewController {
+class CurrentWeatherController: UIViewController, addAlarmDelegate {
 
     @IBOutlet var labelTest: UILabel!
     @IBOutlet var chartView: Chart!
@@ -26,6 +26,10 @@ class CurrentWeatherController: UIViewController {
     
     var timer = Timer()
     
+    // can be a class if we have time
+    var upper = 0, lower = 0
+    var upmsg = "", lowmsg = ""
+    var isAlarm = false
   
     var series:ChartSeries?
     var xs:Queue<Float>!
@@ -114,10 +118,33 @@ class CurrentWeatherController: UIViewController {
         xTimeLabel.text = dateFormatter.string(from: nowtime as Date)
         let time2 = NSDate().addingTimeInterval(-3)
         xTimeLabel2.text = dateFormatter.string(from: time2 as Date)
+        
+        if isAlarm == true {
+            runAlarm(curTem: arrayy[6])
+        }
+        
      
     }
     
+    func runAlarm(curTem:Float)
+    {
+        if curTem >= Float(upper) {
+            showMsg(msg: upmsg)
+            isAlarm = false
+        }
+        else if curTem <= Float(lower) {
+            showMsg(msg: lowmsg)
+            isAlarm = false
+        }
+    }
     
+    func showMsg(msg:String){
+        let alertController = UIAlertController(title: msg, message: nil, preferredStyle: .alert)
+        self.present(alertController, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+            self.presentedViewController?.dismiss(animated: false, completion: nil)
+        }
+    }
     
     
     func scheduledTimerWithTimeInterval(){
@@ -132,6 +159,14 @@ class CurrentWeatherController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "currentPageChanged"), object: 0)
     }
  
+    func addAlarm(up:Int,low:Int,upMes:String,lowMes:String)
+    {
+        upper = up
+        lower = low
+        upmsg = upMes
+        lowmsg = lowMes
+        isAlarm = true
+    }
     
     /*
     // MARK: - Navigation

@@ -23,6 +23,7 @@
 		24BD281F1F70A2FA003E83DE /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 24BD281E1F70A2FA003E83DE /* DLRadioButton.m */; };
 		24BD28211F70AA5C003E83DE /* DLRadioButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BD28201F70AA5C003E83DE /* DLRadioButton.framework */; };
 		24BD28221F70AA5C003E83DE /* DLRadioButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24BD28201F70AA5C003E83DE /* DLRadioButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		24BD28251F70FC4A003E83DE /* AlarmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BD28241F70FC4A003E83DE /* AlarmController.swift */; };
 		24FC39B11F6A2FC800584AF0 /* SensorOneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FC39B01F6A2FC800584AF0 /* SensorOneController.swift */; };
 		24FC39B31F6A35A100584AF0 /* PressureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FC39B21F6A35A100584AF0 /* PressureController.swift */; };
 		24FC39B51F6A35F600584AF0 /* AltitudeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FC39B41F6A35F600584AF0 /* AltitudeController.swift */; };
@@ -62,6 +63,7 @@
 		24BD281D1F70A2FA003E83DE /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		24BD281E1F70A2FA003E83DE /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		24BD28201F70AA5C003E83DE /* DLRadioButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DLRadioButton.framework; sourceTree = "<group>"; };
+		24BD28241F70FC4A003E83DE /* AlarmController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmController.swift; sourceTree = "<group>"; };
 		24FC39B01F6A2FC800584AF0 /* SensorOneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorOneController.swift; sourceTree = "<group>"; };
 		24FC39B21F6A35A100584AF0 /* PressureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureController.swift; sourceTree = "<group>"; };
 		24FC39B41F6A35F600584AF0 /* AltitudeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltitudeController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				2402007E1F67A89300F38ED1 /* Queue.swift */,
 				240200601F67999F00F38ED1 /* AppDelegate.swift */,
 				240200641F67999F00F38ED1 /* Main.storyboard */,
+				24BD28241F70FC4A003E83DE /* AlarmController.swift */,
 				24BD28181F700127003E83DE /* HistoryCell.swift */,
 				24BD281A1F700195003E83DE /* HistoryController.swift */,
 				240200621F67999F00F38ED1 /* ViewController.swift */,
@@ -209,6 +212,7 @@
 				240200731F6799C600F38ED1 /* SwiftyJSON.swift in Sources */,
 				24BD281F1F70A2FA003E83DE /* DLRadioButton.m in Sources */,
 				240200631F67999F00F38ED1 /* ViewController.swift in Sources */,
+				24BD28251F70FC4A003E83DE /* AlarmController.swift in Sources */,
 				24FC39B31F6A35A100584AF0 /* PressureController.swift in Sources */,
 				240200611F67999F00F38ED1 /* AppDelegate.swift in Sources */,
 				24FC39B51F6A35F600584AF0 /* AltitudeController.swift in Sources */,
