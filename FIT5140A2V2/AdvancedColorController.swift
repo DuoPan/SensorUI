@@ -95,7 +95,23 @@ class AdvancedColorController: UITableViewController {
 
     func download() -> UIColor
     {
-        return UIColor.red
+        var url: URL
+        url = URL(string: "http://192.168.1.103:8080/scanColor")!
+        
+        guard let weatherData = NSData(contentsOf: url) else { return UIColor.darkGray}
+        var colorData = JSON(weatherData)[0]
+        print(colorData)
+        //        var range = self.highestRgb - self.lowestRgb
+        
+        let red: Float = colorData["Red"].float! / 300
+        let green: Float = colorData["Green"].float! / 300
+        let blue: Float = colorData["Blue"].float! / 300
+        
+        
+        let scanedColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1)
+        
+//        return UIColor.red
+        return scanedColor
     }
     
     func mergeColor()

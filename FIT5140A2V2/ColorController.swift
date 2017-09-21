@@ -21,6 +21,9 @@ class ColorController: UIViewController {
     @IBOutlet var btn1: UIButton!
     @IBOutlet var btn2: UIButton!
     
+    var lowestRgb: Float = 400
+    var highestRgb: Float = 4500
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +45,20 @@ class ColorController: UIViewController {
     
     @IBAction func readColor1(_ sender: Any) {
         // get color
-        // download()
-        colorView1.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+        var url: URL
+        url = URL(string: "http://192.168.1.103:8080/scanColor")!
+        
+        guard let weatherData = NSData(contentsOf: url) else { return }
+        var colorData = JSON(weatherData)[0]
+        print(colorData)
+//        var range = self.highestRgb - self.lowestRgb
+        
+        var red: Float = colorData["Red"].float! / 300
+        var green: Float = colorData["Green"].float! / 300
+        var blue: Float = colorData["Blue"].float! / 300
+        
+        
+        colorView1.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1)
         mergeColor()
     }
 

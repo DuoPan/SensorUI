@@ -49,7 +49,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
     func download()
     {
         var url: URL
-        url = URL(string: "https://duopan.github.io")!
+        url = URL(string: "http://192.168.1.103:8080/tempHistory")!
         
         guard let weatherData = NSData(contentsOf: url) else { return }
         self.historicalData = JSON(weatherData)
@@ -89,7 +89,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
             if i % 3 == 0
             {
                 cell.labelName.text = "Celsius"
-                cell.labelValue.text = String (describing: (historicalData?.array?[i/3]["wendu"])!)
+                cell.labelValue.text = String (describing: (historicalData?.array?[i/3]["Celsius"])!)
                 sum1 += Double(cell.labelValue.text!)!
                 if (Double(cell.labelValue.text!)! > max1) {
                     max1 = Double(cell.labelValue.text!)!
@@ -100,7 +100,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
             }
             else if i % 3 == 1{
                 cell.labelName.text = "Pressure"
-                cell.labelValue.text = String (describing: (historicalData?.array?[i/3]["pres"])!)
+                cell.labelValue.text = String (describing: (historicalData?.array?[i/3]["Barometer"])!)
                 sum2 += Double(cell.labelValue.text!)!
                 if (Double(cell.labelValue.text!)! > max2) {
                     max2 = Double(cell.labelValue.text!)!
@@ -111,7 +111,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
             }
             else if i % 3 == 2{
                 cell.labelName.text = "Altitude"
-                cell.labelValue.text = String (describing: (historicalData?.array?[i/3]["haiba"])!)
+                cell.labelValue.text = String (describing: (historicalData?.array?[i/3]["Altimeter"])!)
                 sum3 += Double(cell.labelValue.text!)!
                 if (Double(cell.labelValue.text!)! > max3) {
                     max3 = Double(cell.labelValue.text!)!
@@ -120,7 +120,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
                     min3 = Double(cell.labelValue.text!)!
                 }
             }
-            cell.labelTime.text = String (describing: (historicalData?.array?[i/3]["time"])!)
+            cell.labelTime.text = String (describing: (historicalData?.array?[i/3]["Date"])!)
             
        
             
@@ -132,7 +132,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
                 let i = indexPath.row
                 if i % 2 == 0 {
                     cell.labelName.text = "Pressure"
-                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["pres"])!)
+                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["Barometer"])!)
                     sum2 += Double(cell.labelValue.text!)!
                     if (Double(cell.labelValue.text!)! > max2) {
                         max2 = Double(cell.labelValue.text!)!
@@ -143,7 +143,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
                 }
                 else if i % 2 == 1{
                     cell.labelName.text = "Altitude"
-                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["haiba"])!)
+                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["Altimeter"])!)
                     sum3 += Double(cell.labelValue.text!)!
                     if (Double(cell.labelValue.text!)! > max3) {
                         max3 = Double(cell.labelValue.text!)!
@@ -152,7 +152,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
                         min3 = Double(cell.labelValue.text!)!
                     }
                 }
-                cell.labelTime.text = String (describing: (historicalData?.array?[i/2]["time"])!)
+                cell.labelTime.text = String (describing: (historicalData?.array?[i/2]["Date"])!)
                 
             }
             else if btnA2.isSelected == false{
@@ -160,7 +160,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
                 
                 if i % 2 == 0 {
                     cell.labelName.text = "Celsius"
-                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["wendu"])!)
+                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["Celsius"])!)
                     sum1 += Double(cell.labelValue.text!)!
                     if (Double(cell.labelValue.text!)! > max1) {
                         max1 = Double(cell.labelValue.text!)!
@@ -171,7 +171,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
                 }
                 else if i % 2 == 1{
                     cell.labelName.text = "Altitude"
-                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["haiba"])!)
+                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["Altimeter"])!)
                     sum3 += Double(cell.labelValue.text!)!
                     if (Double(cell.labelValue.text!)! > max3) {
                         max3 = Double(cell.labelValue.text!)!
@@ -180,14 +180,14 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
                         min3 = Double(cell.labelValue.text!)!
                     }
                 }
-                cell.labelTime.text = String (describing: (historicalData?.array?[i/2]["time"])!)
+                cell.labelTime.text = String (describing: (historicalData?.array?[i/2]["Date"])!)
                 
             }
             else{
                 let i = indexPath.row
                 if i % 2 == 0 {
                     cell.labelName.text = "Celsius"
-                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["wendu"])!)
+                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["Celsius"])!)
                     sum1 += Double(cell.labelValue.text!)!
                     if (Double(cell.labelValue.text!)! > max1) {
                         max1 = Double(cell.labelValue.text!)!
@@ -198,7 +198,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
                 }
                 else if i % 2 == 1{
                     cell.labelName.text = "Pressure"
-                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["pres"])!)
+                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["Barometer"])!)
                     sum2 += Double(cell.labelValue.text!)!
                     if (Double(cell.labelValue.text!)! > max2) {
                         max2 = Double(cell.labelValue.text!)!
@@ -207,7 +207,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
                         min2 = Double(cell.labelValue.text!)!
                     }
                 }
-                cell.labelTime.text = String (describing: (historicalData?.array?[i/2]["time"])!)
+                cell.labelTime.text = String (describing: (historicalData?.array?[i/2]["Date"])!)
             }
             
         }
@@ -216,8 +216,8 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
             if btnA1.isSelected == true{
                 let i = indexPath.row
                 cell.labelName.text = "Celsius"
-                cell.labelValue.text = String (describing: (historicalData?.array?[i]["wendu"])!)
-                cell.labelTime.text = String (describing: (historicalData?.array?[i]["time"])!)
+                cell.labelValue.text = String (describing: (historicalData?.array?[i]["Celsius"])!)
+                cell.labelTime.text = String (describing: (historicalData?.array?[i]["Date"])!)
                 sum1 += Double(cell.labelValue.text!)!
                 if (Double(cell.labelValue.text!)! > max1) {
                     max1 = Double(cell.labelValue.text!)!
@@ -229,8 +229,8 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
             else if btnA2.isSelected == true{
                 let i = indexPath.row
                 cell.labelName.text = "Pressure"
-                cell.labelValue.text = String (describing: (historicalData?.array?[i]["pres"])!)
-                cell.labelTime.text = String (describing: (historicalData?.array?[i]["time"])!)
+                cell.labelValue.text = String (describing: (historicalData?.array?[i]["Barometer"])!)
+                cell.labelTime.text = String (describing: (historicalData?.array?[i]["Date"])!)
                 sum2 += Double(cell.labelValue.text!)!
                 if (Double(cell.labelValue.text!)! > max2) {
                     max2 = Double(cell.labelValue.text!)!
@@ -242,8 +242,8 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
             else{
                 let i = indexPath.row
                 cell.labelName.text = "Altitude"
-                cell.labelValue.text = String (describing: (historicalData?.array?[i]["haiba"])!)
-                cell.labelTime.text = String (describing: (historicalData?.array?[i]["time"])!)
+                cell.labelValue.text = String (describing: (historicalData?.array?[i]["Altimeter"])!)
+                cell.labelTime.text = String (describing: (historicalData?.array?[i]["Date"])!)
                 sum3 += Double(cell.labelValue.text!)!
                 if (Double(cell.labelValue.text!)! > max3) {
                     max3 = Double(cell.labelValue.text!)!

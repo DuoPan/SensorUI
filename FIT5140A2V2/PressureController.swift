@@ -33,7 +33,8 @@ class PressureController: UIViewController {
         
         setChart()
         
-        scheduledTimerWithTimeInterval()}
+        scheduledTimerWithTimeInterval()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,31 +48,10 @@ class PressureController: UIViewController {
     }
     
     
-    func downloadWeather() {
-        var url: URL
-        url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=beijing&units=metric&appid=12b2817fbec86915a6e9b4dbbd3d9036")!
-        
-        // fast method to get data
-        guard let weatherData = NSData(contentsOf: url) else { return }
-        let jsonData = JSON(weatherData)
-        labelTop.text = "城市：\(jsonData["name"].string!)"
-        
-        // slow method to get data
-        //        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-        //            if(error != nil) {
-        //                print("URL Error has occured: \(error)")
-        //            } else {
-        //                let jsonData = JSON(data)
-        //                self.labelTest.text = "城市：\(jsonData["name"].string!)"
-        //            }
-        //        }
-        //        task.resume()
-    }
-    
     func setChart()
     {
         series = ChartSeries([0])
-        chartView.maxY = 10
+        chartView.maxY = 200
         chartView.minY = 0
         chartView.maxX = 6
         chartView.minX = 0
@@ -95,13 +75,21 @@ class PressureController: UIViewController {
     
     func updateChart()
     {
+        var url: URL
+        url = URL(string: "http://192.168.1.103:8080/temperature")!
+        // fast method to get data
+        guard let weatherData = NSData(contentsOf: url) else { return }
+        let jsonData = JSON(weatherData)
+        //        print(jsonData)
+        
         chartView.removeAllSeries()
         
-        let fir = ys.dequeue()
-        ys.enqueue(fir!)
-        let arrayy = ys.toList
+        _ = ys.dequeue()
+        let celsius = jsonData["Barometer"].float!
+        ys.enqueue(celsius)
         
-        self.series?.data = [(0,arrayy[0]),(1, arrayy[1]), (2,arrayy[2]),(3, arrayy[3]),(4,arrayy[4]),(5,arrayy[5]),(6, arrayy[6])]
+        let array = ys.toList
+        self.series?.data = [(0,array[0]),(1, array[1]), (2,array[2]),(3, array[3]),(4,array[4]),(5,array[5]),(6, array[6])]
         
         series?.area = true
         chartView.add(series!)
@@ -112,12 +100,12 @@ class PressureController: UIViewController {
         xTimeLabel.text = dateFormatter.string(from: nowtime as Date)
         let time2 = NSDate().addingTimeInterval(-3)
         xTimeLabel2.text = dateFormatter.string(from: time2 as Date)
-        
     }
+    
     
     func scheduledTimerWithTimeInterval(){
         // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateChart), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.updateChart), userInfo: nil, repeats: true)
     }
     
     /*

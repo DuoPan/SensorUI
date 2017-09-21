@@ -24,6 +24,7 @@ class CurrentWeatherController: UIViewController, addAlarmDelegate {
     @IBOutlet var xTimeLabel: UILabel!
     @IBOutlet var xTimeLabel2: UILabel!
     
+    
     var timer = Timer()
     
     // can be a class if we have time
@@ -37,8 +38,6 @@ class CurrentWeatherController: UIViewController, addAlarmDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       // downloadWeather()
         xs = Queue<Float>()
         ys = Queue<Float>()
 
@@ -77,7 +76,7 @@ class CurrentWeatherController: UIViewController, addAlarmDelegate {
     func setChart()
     {
         series = ChartSeries([0])
-        chartView.maxY = 10
+        chartView.maxY = 45
         chartView.minY = 0
         chartView.maxX = 6
         chartView.minX = 0
@@ -101,13 +100,21 @@ class CurrentWeatherController: UIViewController, addAlarmDelegate {
     
     func updateChart()
     {
+        var url: URL
+        url = URL(string: "http://192.168.1.103:8080/temperature")!
+        // fast method to get data
+        guard let weatherData = NSData(contentsOf: url) else { return }
+        let jsonData = JSON(weatherData)
+        print(jsonData)
+        
         chartView.removeAllSeries()
         
-        let fir = ys.dequeue()
-        ys.enqueue(fir!)
-        let arrayy = ys.toList
+        _ = ys.dequeue()
+        let celsius = jsonData["Celsius"].float!
+        ys.enqueue(celsius)
+        let array = ys.toList
         
-        self.series?.data = [(0,arrayy[0]),(1, arrayy[1]), (2,arrayy[2]),(3, arrayy[3]),(4,arrayy[4]),(5,arrayy[5]),(6, arrayy[6])]
+        self.series?.data = [(0,array[0]),(1, array[1]), (2,array[2]),(3, array[3]),(4,array[4]),(5,array[5]),(6, array[6])]
         
         series?.area = true
         chartView.add(series!)
@@ -120,7 +127,7 @@ class CurrentWeatherController: UIViewController, addAlarmDelegate {
         xTimeLabel2.text = dateFormatter.string(from: time2 as Date)
         
         if isAlarm == true {
-            runAlarm(curTem: arrayy[6])
+            runAlarm(curTem: array[6])
         }
         
      
@@ -149,7 +156,7 @@ class CurrentWeatherController: UIViewController, addAlarmDelegate {
     
     func scheduledTimerWithTimeInterval(){
         // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateChart), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.updateChart), userInfo: nil, repeats: true)
     }
     
     
