@@ -12,7 +12,7 @@ import DLRadioButton
 class HistoryController: UITableViewController, UITextFieldDelegate {
     
     var historicalData:JSON?
-    var rowNumber:Int = 0 // size of array, should set max number
+    var rowNumber:Int = 10 // size of array, should set max number
     
     @IBOutlet var btnA1: DLRadioButton!
     @IBOutlet var btnA2: DLRadioButton!
@@ -53,7 +53,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
         
         guard let weatherData = NSData(contentsOf: url) else { return }
         self.historicalData = JSON(weatherData)
-        self.rowNumber = (self.historicalData?.array?.count)!
+        //self.rowNumber = (self.historicalData?.array?.count)!
         
      //default show all data
         self.textNumber.text = String(self.rowNumber) // max is 100, default is 100
@@ -100,7 +100,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
             }
             else if i % 3 == 1{
                 cell.labelName.text = "Pressure"
-                cell.labelValue.text = String (describing: (historicalData?.array?[i/3]["Barometer"])!)
+                cell.labelValue.text =  NSString(format:"%.2f", (historicalData?.array?[i/3]["Barometer"].float!)! ) as String
                 sum2 += Double(cell.labelValue.text!)!
                 if (Double(cell.labelValue.text!)! > max2) {
                     max2 = Double(cell.labelValue.text!)!
@@ -132,7 +132,9 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
                 let i = indexPath.row
                 if i % 2 == 0 {
                     cell.labelName.text = "Pressure"
-                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["Barometer"])!)
+                    //cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["Barometer"])!)
+                    cell.labelValue.text =  NSString(format:"%.2f", (historicalData?.array?[i/2]["Barometer"].float!)! ) as String
+                    
                     sum2 += Double(cell.labelValue.text!)!
                     if (Double(cell.labelValue.text!)! > max2) {
                         max2 = Double(cell.labelValue.text!)!
@@ -198,7 +200,9 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
                 }
                 else if i % 2 == 1{
                     cell.labelName.text = "Pressure"
-                    cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["Barometer"])!)
+                    //cell.labelValue.text = String (describing: (historicalData?.array?[i/2]["Barometer"])!)
+                    cell.labelValue.text =  NSString(format:"%.2f", (historicalData?.array?[i/2]["Barometer"].float!)! ) as String
+                    
                     sum2 += Double(cell.labelValue.text!)!
                     if (Double(cell.labelValue.text!)! > max2) {
                         max2 = Double(cell.labelValue.text!)!
@@ -229,7 +233,9 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
             else if btnA2.isSelected == true{
                 let i = indexPath.row
                 cell.labelName.text = "Pressure"
-                cell.labelValue.text = String (describing: (historicalData?.array?[i]["Barometer"])!)
+                //cell.labelValue.text = String (describing: (historicalData?.array?[i]["Barometer"])!)
+                cell.labelValue.text =  NSString(format:"%.2f", (historicalData?.array?[i]["Barometer"].float!)! ) as String
+                
                 cell.labelTime.text = String (describing: (historicalData?.array?[i]["Date"])!)
                 sum2 += Double(cell.labelValue.text!)!
                 if (Double(cell.labelValue.text!)! > max2) {
@@ -343,6 +349,7 @@ class HistoryController: UITableViewController, UITextFieldDelegate {
             let alert = UIAlertController(title: "Warning", message: "Can not over 1000", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+            
             textNumber.text = "1000"
         }
         else{// if there is enough data
