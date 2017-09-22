@@ -12,6 +12,9 @@ class AdvancedColorController: UITableViewController {
 
     var rows = 4
     var colorList:[UIColor] = []
+    //set the rgb range. these values are from experiment
+    var lowestRgb: Float = 400
+    var highestRgb: Float = 4500
     
     @IBOutlet var result1: UIView!
     
@@ -95,18 +98,56 @@ class AdvancedColorController: UITableViewController {
 
     func download() -> UIColor
     {
+        // get color
         var url: URL
         url = URL(string: "http://192.168.1.103:8080/scanColor")!
         
         guard let weatherData = NSData(contentsOf: url) else { return UIColor.darkGray}
-        var colorData = JSON(weatherData)[0]
+        let colorData = JSON(weatherData)
         print(colorData)
         //        var range = self.highestRgb - self.lowestRgb
+        var red: Float = 0
+        var green: Float = 0
+        var blue: Float = 0
         
-        let red: Float = colorData["Red"].float! / 300
-        let green: Float = colorData["Green"].float! / 300
-        let blue: Float = colorData["Blue"].float! / 300
+        //rgb average
+        for item in colorData.array! {
+            red += item["Red"].float!
+            green += item["Green"].float!
+            blue += item["Blue"].float!
+        }
         
+        red /= Float(colorData.count)
+        green /= Float(colorData.count)
+        blue /= Float(colorData.count)
+        
+        //transfer rgn to range 0-1
+        if red < self.lowestRgb{
+            red = self.lowestRgb
+        }
+        else if red > self.highestRgb {
+            red = self.highestRgb
+        }else {
+            red = (red - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
+        }
+        
+        if green < self.lowestRgb{
+            green = self.lowestRgb
+        }
+        else if green > self.highestRgb {
+            green = self.highestRgb
+        }else {
+            green = (green - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
+        }
+        
+        if blue < self.lowestRgb{
+            blue = self.lowestRgb
+        }
+        else if blue > self.highestRgb {
+            blue = self.highestRgb
+        }else {
+            blue = (blue - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
+        }
         
         let scanedColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1)
         
