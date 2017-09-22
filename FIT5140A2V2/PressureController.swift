@@ -51,8 +51,8 @@ class PressureController: UIViewController {
     func setChart()
     {
         series = ChartSeries([0])
-        chartView.maxY = 200
-        chartView.minY = 0
+        chartView.maxY = 101
+        chartView.minY = 100
         chartView.maxX = 6
         chartView.minX = 0
         series?.color = ChartColors.blueColor()
@@ -63,13 +63,13 @@ class PressureController: UIViewController {
             i += 1
         }
         chartView.showXLabelsAndGrid = false
-        ys.enqueue(Float(9))
-        ys.enqueue(Float(7))
-        ys.enqueue(Float(4))
-        ys.enqueue(Float(5))
-        ys.enqueue(Float(4))
-        ys.enqueue(Float(5))
-        ys.enqueue(Float(6))
+        ys.enqueue(Float(98))
+        ys.enqueue(Float(98.5))
+        ys.enqueue(Float(99))
+        ys.enqueue(Float(99.5))
+        ys.enqueue(Float(99.6))
+        ys.enqueue(Float(99.7))
+        ys.enqueue(Float(100))
         
     }
     
@@ -85,8 +85,11 @@ class PressureController: UIViewController {
         chartView.removeAllSeries()
         
         _ = ys.dequeue()
-        let celsius = jsonData["Barometer"].float!
-        ys.enqueue(celsius)
+        let pressure = jsonData["Barometer"].float!
+        
+        self.labelTop.text = "Current pressure is: " + String(format:"%.4f", pressure) + " kPa"
+        
+        ys.enqueue(pressure)
         
         let array = ys.toList
         self.series?.data = [(0,array[0]),(1, array[1]), (2,array[2]),(3, array[3]),(4,array[4]),(5,array[5]),(6, array[6])]
@@ -98,7 +101,7 @@ class PressureController: UIViewController {
         dateFormatter.dateFormat = "mm:ss"
         let nowtime = NSDate()
         xTimeLabel.text = dateFormatter.string(from: nowtime as Date)
-        let time2 = NSDate().addingTimeInterval(-3)
+        let time2 = NSDate().addingTimeInterval(-6)
         xTimeLabel2.text = dateFormatter.string(from: time2 as Date)
     }
     

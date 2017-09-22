@@ -61,13 +61,13 @@ class AltitudeController: UIViewController {
             i += 1
         }
         chartView.showXLabelsAndGrid = false
-        ys.enqueue(Float(9))
+        ys.enqueue(Float(5))
         ys.enqueue(Float(7))
-        ys.enqueue(Float(4))
-        ys.enqueue(Float(5))
-        ys.enqueue(Float(4))
-        ys.enqueue(Float(5))
-        ys.enqueue(Float(6))
+        ys.enqueue(Float(10))
+        ys.enqueue(Float(15))
+        ys.enqueue(Float(20))
+        ys.enqueue(Float(21.5))
+        ys.enqueue(Float(23))
         
     }
     
@@ -84,6 +84,9 @@ class AltitudeController: UIViewController {
         
         _ = ys.dequeue()
         let altimeter = jsonData["Altimeter"].float!
+        
+        self.labelTop.text = "Current altimeter is: " + String(format:"%.1f", altimeter) + " m"
+        
         ys.enqueue(altimeter)
         let array = ys.toList
         
@@ -96,7 +99,7 @@ class AltitudeController: UIViewController {
         dateFormatter.dateFormat = "mm:ss"
         let nowtime = NSDate()
         xTimeLabel.text = dateFormatter.string(from: nowtime as Date)
-        let time2 = NSDate().addingTimeInterval(-3)
+        let time2 = NSDate().addingTimeInterval(-6)
         xTimeLabel2.text = dateFormatter.string(from: time2 as Date)
         
     }

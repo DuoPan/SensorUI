@@ -13,8 +13,8 @@ class AdvancedColorController: UITableViewController {
     var rows = 4
     var colorList:[UIColor] = []
     //set the rgb range. these values are from experiment
-    var lowestRgb: Float = 400
-    var highestRgb: Float = 4500
+    var lowestRgb: Float = 1400
+    var highestRgb: Float = 30000
     
     @IBOutlet var result1: UIView!
     
@@ -105,53 +105,9 @@ class AdvancedColorController: UITableViewController {
         guard let weatherData = NSData(contentsOf: url) else { return UIColor.darkGray}
         let colorData = JSON(weatherData)
         print(colorData)
-        //        var range = self.highestRgb - self.lowestRgb
-        var red: Float = 0
-        var green: Float = 0
-        var blue: Float = 0
         
-        //rgb average
-        for item in colorData.array! {
-            red += item["Red"].float!
-            green += item["Green"].float!
-            blue += item["Blue"].float!
-        }
-        
-        red /= Float(colorData.count)
-        green /= Float(colorData.count)
-        blue /= Float(colorData.count)
-        
-        //transfer rgn to range 0-1
-        if red < self.lowestRgb{
-            red = self.lowestRgb
-        }
-        else if red > self.highestRgb {
-            red = self.highestRgb
-        }else {
-            red = (red - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
-        }
-        
-        if green < self.lowestRgb{
-            green = self.lowestRgb
-        }
-        else if green > self.highestRgb {
-            green = self.highestRgb
-        }else {
-            green = (green - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
-        }
-        
-        if blue < self.lowestRgb{
-            blue = self.lowestRgb
-        }
-        else if blue > self.highestRgb {
-            blue = self.highestRgb
-        }else {
-            blue = (blue - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
-        }
-        
-        let scanedColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1)
-        
-//        return UIColor.red
+        let scanedColor = calculateRGB(colorData: colorData)
+        //        return UIColor.red
         return scanedColor
     }
     
@@ -198,7 +154,52 @@ class AdvancedColorController: UITableViewController {
         self.result2.layer.addSublayer(gradientLayer)
     }
     
-    
+    func calculateRGB(colorData: JSON) -> UIColor {
+        var red: Float = 0
+        var green: Float = 0
+        var blue: Float = 0
+        
+        //rgb average
+        for item in colorData.array! {
+            red += item["Red"].float!
+            green += item["Green"].float!
+            blue += item["Blue"].float!
+        }
+        
+        red /= Float(colorData.count)
+        green /= Float(colorData.count)
+        blue /= Float(colorData.count)
+        
+        //transfer rgn to range 0-1
+        if red < self.lowestRgb{
+            red = 0
+        }
+        else if red > self.highestRgb {
+            red = 1
+        }else {
+            red = (red - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
+        }
+        
+        if green < self.lowestRgb{
+            green = 0
+        }
+        else if green > self.highestRgb {
+            green = 1
+        }else {
+            green = (green - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
+        }
+        
+        if blue < self.lowestRgb{
+            blue = 0
+        }
+        else if blue > self.highestRgb {
+            blue = 1
+        }else {
+            blue = (blue - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
+        }
+        
+        return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

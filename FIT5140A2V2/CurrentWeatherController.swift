@@ -88,13 +88,13 @@ class CurrentWeatherController: UIViewController, addAlarmDelegate {
             i += 1
         }
         chartView.showXLabelsAndGrid = false
-        ys.enqueue(Float(6))
-        ys.enqueue(Float(7))
-        ys.enqueue(Float(6))
+        ys.enqueue(Float(1))
         ys.enqueue(Float(5))
-        ys.enqueue(Float(4))
-        ys.enqueue(Float(5))
-        ys.enqueue(Float(6))
+        ys.enqueue(Float(10))
+        ys.enqueue(Float(15))
+        ys.enqueue(Float(17))
+        ys.enqueue(Float(19))
+        ys.enqueue(Float(20))
         
     }
     
@@ -111,6 +111,9 @@ class CurrentWeatherController: UIViewController, addAlarmDelegate {
         
         _ = ys.dequeue()
         let celsius = jsonData["Celsius"].float!
+        
+        self.labelTest.text = "Current temperature is: " + String(format:"%.1f", celsius) + " °C"
+            
         ys.enqueue(celsius)
         let array = ys.toList
         
@@ -123,7 +126,7 @@ class CurrentWeatherController: UIViewController, addAlarmDelegate {
         dateFormatter.dateFormat = "mm:ss"
         let nowtime = NSDate()
         xTimeLabel.text = dateFormatter.string(from: nowtime as Date)
-        let time2 = NSDate().addingTimeInterval(-3)
+        let time2 = NSDate().addingTimeInterval(-6)
         xTimeLabel2.text = dateFormatter.string(from: time2 as Date)
         
         if isAlarm == true {
@@ -175,14 +178,4 @@ class CurrentWeatherController: UIViewController, addAlarmDelegate {
         isAlarm = true
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

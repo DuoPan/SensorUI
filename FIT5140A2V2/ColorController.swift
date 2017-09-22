@@ -21,8 +21,8 @@ class ColorController: UIViewController {
     @IBOutlet var btn1: UIButton!
     @IBOutlet var btn2: UIButton!
     
-    var lowestRgb: Float = 400
-    var highestRgb: Float = 4500
+    var lowestRgb: Float = 1400
+    var highestRgb: Float = 30000
     
     
     override func viewDidLoad() {
@@ -50,59 +50,23 @@ class ColorController: UIViewController {
         
         guard let weatherData = NSData(contentsOf: url) else { return }
         let colorData = JSON(weatherData)
-        print(colorData)
-        //        var range = self.highestRgb - self.lowestRgb
-        var red: Float = 0
-        var green: Float = 0
-        var blue: Float = 0
+        //print(colorData)
         
-        //rgb average
-        for item in colorData.array! {
-            red += item["Red"].float!
-            green += item["Green"].float!
-            blue += item["Blue"].float!
-        }
-        
-        red /= Float(colorData.count)
-        green /= Float(colorData.count)
-        blue /= Float(colorData.count)
-        
-        //transfer rgn to range 0-1
-        if red < self.lowestRgb{
-            red = self.lowestRgb
-        }
-        else if red > self.highestRgb {
-            red = self.highestRgb
-        }else {
-            red = (red - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
-        }
-        
-        if green < self.lowestRgb{
-            green = self.lowestRgb
-        }
-        else if green > self.highestRgb {
-            green = self.highestRgb
-        }else {
-            green = (green - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
-        }
-        
-        if blue < self.lowestRgb{
-            blue = self.lowestRgb
-        }
-        else if blue > self.highestRgb {
-            blue = self.highestRgb
-        }else {
-            blue = (blue - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
-        }
-        
-        
-        
-        colorView1.backgroundColor = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1)
+        colorView1.backgroundColor = calculateRGB(colorData: colorData)
+
         mergeColor()
     }
 
     @IBAction func readColor2(_ sender: Any) {
-        colorView2.backgroundColor = UIColor(red: 0, green: 1, blue: 0, alpha: 1)
+        // get color
+        var url: URL
+        url = URL(string: "http://192.168.1.103:8080/scanColor")!
+        
+        guard let weatherData = NSData(contentsOf: url) else { return }
+        let colorData = JSON(weatherData)
+        //print(colorData)
+
+        colorView2.backgroundColor = calculateRGB(colorData: colorData)
         mergeColor()
     }
     
@@ -147,6 +111,52 @@ class ColorController: UIViewController {
    
     }
     
+    func calculateRGB(colorData: JSON) -> UIColor {
+        var red: Float = 0
+        var green: Float = 0
+        var blue: Float = 0
+        
+        //rgb average
+        for item in colorData.array! {
+            red += item["Red"].float!
+            green += item["Green"].float!
+            blue += item["Blue"].float!
+        }
+        
+        red /= Float(colorData.count)
+        green /= Float(colorData.count)
+        blue /= Float(colorData.count)
+        
+        //transfer rgn to range 0-1
+        if red < self.lowestRgb{
+            red = 0
+        }
+        else if red > self.highestRgb {
+            red = 1
+        }else {
+            red = (red - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
+        }
+        
+        if green < self.lowestRgb{
+            green = 0
+        }
+        else if green > self.highestRgb {
+            green = 1
+        }else {
+            green = (green - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
+        }
+        
+        if blue < self.lowestRgb{
+            blue = 0
+        }
+        else if blue > self.highestRgb {
+            blue = 1
+        }else {
+            blue = (blue - self.lowestRgb) / (self.highestRgb - self.lowestRgb)
+        }
+        
+        return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1)
+    }
     /*
     // MARK: - Navigation
 
